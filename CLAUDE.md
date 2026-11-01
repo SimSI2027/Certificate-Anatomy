@@ -47,3 +47,27 @@
 - Never force push or move a published tag.
 - GitHub Pages is the canonical public demo.
 - Before reporting a release complete, verify GitHub Pages deploys the newest stable main commit.
+
+## Learning content rules (v0.1.0)
+- Inspector order: plain language, why, relationship, classification, who controls it, security meaning and facts, parsed technical value, source classification, validation use, common failure. Raw views stay closed by default.
+- Technical values are always read from the parsed fixture bytes, never hard-coded in copy.
+- Certificate source categories: approved (from CSR), added (CA), derived (during issuance), config (CA publication). "Used during validation" is an overlay, not a source.
+- The template name travels as a separate CSR attribute, not an extension request; explain it as policy selection.
+- The thumbprint is computed, not stored; show it outside the structure.
+- Film captions stay at or under 5 words per second.
+
+## Motion and layout rules (v0.1.0)
+- All durations, staggers, holds and easings live in src/motion/tokens.js.
+- Layouts are pure functions of state (src/motion/layout.js); never accumulate positions from previous frames.
+- No CSS transitions on stage elements; the motion loop writes every frame.
+- Camera and world planes are pointer-events: none; only artifacts take clicks.
+- Interactive and film frames share computeFrame + sample; the film is built from real reducer actions.
+
+## Fixture rules (v0.1.0)
+- Keys are generated in memory and discarded; never seed key generation (a committed seed equals a committed key).
+- After regenerating fixtures run npm run fixtures:validate and npm test; commit the regenerated public files together.
+
+## Release workflow (v0.1.0)
+- Gate: fixtures:validate, npm test, playwright, smoke:pages, PS 5.1 parse, launcher -Smoke runs, native viewer open, film stills + contact sheet review, final MP4 + ffprobe, git diff --check, tracked-file inspection.
+- Vite preview must serve under /Certificate-Anatomy/ so subpath bugs surface locally.
+- Never kill processes by image name; stop only the PIDs this project started (look them up by port).

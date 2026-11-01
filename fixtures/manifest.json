@@ -1,0 +1,140 @@
+{
+  "project": "Certificate Anatomy",
+  "synthetic": true,
+  "note": "Entirely synthetic public artifacts. Private keys were generated in memory and discarded; none are distributed.",
+  "simulationClock": "2026-11-02T09:45:00Z",
+  "scenario": {
+    "administrator": "SIMSI2027\\CertificateAdmin",
+    "requestingMachine": "APP01.simsi2027.test",
+    "service": "app.simsi2027.test",
+    "issuingCa": "SIMSI2027 Issuing CA 01",
+    "issuingCaHost": "ICA01.simsi2027.test",
+    "rootCa": "SIMSI2027 Root CA",
+    "template": "SIMSI2027ManualWebServer",
+    "requestId": 1047,
+    "caConfig": "ICA01.simsi2027.test\\SIMSI2027 Issuing CA 01"
+  },
+  "artifacts": {
+    "rootCa": {
+      "kind": "certificate",
+      "role": "Offline Root CA (self-signed trust anchor)",
+      "der": "fixtures/certificates/simsi2027-root-ca.cer",
+      "pem": "fixtures/certificates/simsi2027-root-ca.pem",
+      "serial": "762859CD64058F7DED639A657318BB07",
+      "subject": "CN=SIMSI2027 Root CA, O=SIMSI2027 Synthetic Lab",
+      "issuer": "CN=SIMSI2027 Root CA, O=SIMSI2027 Synthetic Lab",
+      "notBefore": "2026-01-05T09:00:00Z",
+      "notAfter": "2046-01-05T09:00:00Z",
+      "keyAlgorithm": "RSA 4096",
+      "spkiSha256": "68B756170F45A7A6AE89D09236D9E0EB07C15C12D5C3A21EC3DDBB14BF77BB4E",
+      "thumbprints": {
+        "sha1": "A5689A71030DE36F5BA26ABDA56BC32C878D59E2",
+        "sha256": "8EBF60E91371A9FDC163CE7B11B40D34E81094249125B88A29ABE3A4D695E356"
+      },
+      "signedBy": "rootCa"
+    },
+    "issuingCa": {
+      "kind": "certificate",
+      "role": "Enterprise Issuing CA / SubCA",
+      "der": "fixtures/certificates/simsi2027-issuing-ca-01.cer",
+      "pem": "fixtures/certificates/simsi2027-issuing-ca-01.pem",
+      "serial": "5AF8A11FC6668D288B343CA11298EEAB",
+      "subject": "CN=SIMSI2027 Issuing CA 01, O=SIMSI2027 Synthetic Lab",
+      "issuer": "CN=SIMSI2027 Root CA, O=SIMSI2027 Synthetic Lab",
+      "notBefore": "2026-01-15T10:00:00Z",
+      "notAfter": "2036-01-15T10:00:00Z",
+      "keyAlgorithm": "RSA 4096",
+      "spkiSha256": "E7A74FA43AAA1FF4C1F58BAF0C8596B56E99E96E5A58BF909E7CFBC0F1A26C04",
+      "thumbprints": {
+        "sha1": "7CC8AC36E109BE71B313941CDB86DD2C820C1389",
+        "sha256": "BB9B2F79863CD7FC07376222103E7966783432142DA04227CC99E1D5E84E8EE4"
+      },
+      "signedBy": "rootCa"
+    },
+    "request": {
+      "kind": "pkcs10",
+      "role": "Manual CSR created and signed on APP01",
+      "der": "fixtures/requests/app01-request.der",
+      "pem": "fixtures/requests/app01-request.csr",
+      "policy": "fixtures/requests/app01-request.inf",
+      "subject": "CN=app.simsi2027.test, O=SIMSI2027 Synthetic Lab",
+      "keyAlgorithm": "RSA 2048",
+      "spkiSha256": "0156F77E09BFBD1EB32B4C2EE7A533CF251B701FEFB2B0AE16DBEEB5EC01F2A3",
+      "createdOn": "APP01.simsi2027.test",
+      "created": "2026-11-02T09:12:00Z",
+      "signedBy": "APP01 private key (self-signature, proof of possession)"
+    },
+    "leaf": {
+      "kind": "certificate",
+      "role": "Issued TLS server certificate for app.simsi2027.test",
+      "der": "fixtures/certificates/app-simsi2027-test.cer",
+      "pem": "fixtures/certificates/app-simsi2027-test.pem",
+      "chain": "fixtures/certificates/app-simsi2027-test-chain.pem",
+      "serial": "5CD8CC2AFDB017799BAE7678795FECA8",
+      "subject": "CN=app.simsi2027.test, O=SIMSI2027 Synthetic Lab",
+      "issuer": "CN=SIMSI2027 Issuing CA 01, O=SIMSI2027 Synthetic Lab",
+      "notBefore": "2026-11-02T09:31:00Z",
+      "notAfter": "2027-11-02T09:41:00Z",
+      "issued": "2026-11-02T09:41:00Z",
+      "keyAlgorithm": "RSA 2048",
+      "spkiSha256": "0156F77E09BFBD1EB32B4C2EE7A533CF251B701FEFB2B0AE16DBEEB5EC01F2A3",
+      "thumbprints": {
+        "sha1": "64A4B413E81FAD6B6BBC778C0C61E6C23C5C32D8",
+        "sha256": "434A430A5138D45DCA59DC7B71BC6BB891900F6FEFC580C3AB87F2F66E299B3F"
+      },
+      "signedBy": "issuingCa",
+      "issuedFromRequest": "request",
+      "requestId": 1047
+    },
+    "issuingCrl": {
+      "kind": "crl",
+      "role": "CRL published by SIMSI2027 Issuing CA 01 (no revoked entries)",
+      "der": "fixtures/crl/simsi2027-issuing-ca-01.crl",
+      "pem": "fixtures/crl/simsi2027-issuing-ca-01.crl.pem",
+      "thisUpdate": "2026-11-02T08:00:00Z",
+      "nextUpdate": "2026-11-09T20:00:00Z",
+      "crlNumber": 42,
+      "signedBy": "issuingCa"
+    },
+    "rootCrl": {
+      "kind": "crl",
+      "role": "CRL published by the offline Root CA (no revoked entries)",
+      "der": "fixtures/crl/simsi2027-root-ca.crl",
+      "thisUpdate": "2026-07-01T09:00:00Z",
+      "nextUpdate": "2027-07-01T09:00:00Z",
+      "crlNumber": 3,
+      "signedBy": "rootCa"
+    }
+  },
+  "chain": [
+    "leaf",
+    "issuingCa",
+    "rootCa"
+  ],
+  "files": {
+    "fixtures/certificates/simsi2027-root-ca.cer": {
+      "sha256": "8EBF60E91371A9FDC163CE7B11B40D34E81094249125B88A29ABE3A4D695E356",
+      "bytes": 1356
+    },
+    "fixtures/certificates/simsi2027-issuing-ca-01.cer": {
+      "sha256": "BB9B2F79863CD7FC07376222103E7966783432142DA04227CC99E1D5E84E8EE4",
+      "bytes": 1551
+    },
+    "fixtures/certificates/app-simsi2027-test.cer": {
+      "sha256": "434A430A5138D45DCA59DC7B71BC6BB891900F6FEFC580C3AB87F2F66E299B3F",
+      "bytes": 1380
+    },
+    "fixtures/requests/app01-request.der": {
+      "sha256": "6A571A6BC8DED9A918493C4C2B79B70F8B9EB26A2515417E50A6597B2C4789BB",
+      "bytes": 866
+    },
+    "fixtures/crl/simsi2027-issuing-ca-01.crl": {
+      "sha256": "2D3FBA3F75A0FD96B98EA837120D1DFAEDBDCDD677E3EF3CA7F1E6F1D0EEDA59",
+      "bytes": 706
+    },
+    "fixtures/crl/simsi2027-root-ca.crl": {
+      "sha256": "CB7BCDFF2B7613480F4C9AD6EC12E0C1C7A74E7AD94353AD92811606195A2AF1",
+      "bytes": 700
+    }
+  }
+}

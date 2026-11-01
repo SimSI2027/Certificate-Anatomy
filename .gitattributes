@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.cer binary
+*.der binary
+*.crl binary
+*.inf -text whitespace=cr-at-eol
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary

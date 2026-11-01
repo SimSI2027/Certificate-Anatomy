@@ -21,3 +21,5 @@ temp/
 .env.*
 Thumbs.db
 .DS_Store
+.vite/
+scratch-*

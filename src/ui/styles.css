@@ -219,9 +219,7 @@ a { color: var(--ink); }
 .plate[data-computed='true']::before { background: var(--ink-3); }
 
 /* Signature plates read as a protected seal: dense byte texture, red-brown edge */
-.plate[data-node$='sigValue'] .plate-opened { font-size: var(--fs-12); color: var(--ink-3); opacity: var(--op); margin-top: 6px; }
-.plate[data-size='xs'] .plate-opened, .plate[data-size='sm'] .plate-opened { display: none; }
-.plate-hex { max-height: 40px; color: #6f6a62; }
+.plate[data-node$='sigValue'] .plate-hex { max-height: 30px; color: #6f6a62; }
 
 /* ---------------------------------------------------------------------------
    Block: the compact, assembled artifact.
